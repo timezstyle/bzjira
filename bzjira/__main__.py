@@ -28,7 +28,9 @@ def sync_bz_to_jira(bz, bz_id, jira, project_key, yes_all):
                                   description=bug.long_desc[0].thetext,
                                   issuetype={'name': 'Bug'},
                                   priority={'name': 'Critical' if bug.priority == 'P1' else 'Major'},
-                                  customfield_10216=str(bug.bug_id))
+                                  customfield_10216=str(bug.bug_id),
+                                  customfield_10203=0,
+                                  customfield_10205=str(bug.long_desc))
         return issue
 
     issues = jira.search_issues('project = %s AND "BugZilla ID" ~ "%s"' % (project_key, bz_id))
