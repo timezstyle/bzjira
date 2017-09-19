@@ -121,6 +121,7 @@ def sync_mantis_to_jira(mantis_server, username, passwd, mantis_id, jira, projec
                                   description=bug.description,
                                   issuetype={'name': 'Bug'},
                                   priority={'name': 'Critical' if bug.priority == 'P1' else 'Major'},
+                                  components= [{"name":"Other"}],
                                   customfield_10216='Mantis-' + str(bug.id),
                                   customfield_10203=0,
                                   customfield_10205='see Description below')
