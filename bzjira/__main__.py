@@ -31,7 +31,7 @@ def sync_bz_to_jira(bz, bz_id, jira, project_key, yes_all):
                                   components= [{"name":"Other"}],
                                   customfield_10216=str(bug.bug_id),
                                   customfield_10203=0,
-                                  customfield_10205=str(bug.long_desc))
+                                  customfield_10205='see Description below')
         return issue
 
     issues = jira.search_issues('project = %s AND "BugZilla ID" ~ "%s"' % (project_key, bz_id))
@@ -121,7 +121,9 @@ def sync_mantis_to_jira(mantis_server, username, passwd, mantis_id, jira, projec
                                   description=bug.description,
                                   issuetype={'name': 'Bug'},
                                   priority={'name': 'Critical' if bug.priority == 'P1' else 'Major'},
-                                  customfield_10216='Mantis-' + str(bug.id))
+                                  customfield_10216='Mantis-' + str(bug.id),
+                                  customfield_10203=0,
+                                  customfield_10205='see Description below')
         return issue
 
     issues = jira.search_issues('project = %s AND "BugZilla ID" ~ "Mantis-%s"' % (project_key, mantis_id))
