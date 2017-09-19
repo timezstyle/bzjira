@@ -29,7 +29,7 @@ def sync_bz_to_jira(bz, bz_id, jira, project_key, yes_all):
                                   issuetype={'name': 'Bug'},
                                   priority={'name': 'Critical' if bug.priority == 'P1' else 'Major'},
                                   customfield_10216=str(bug.bug_id),
-                                  customfield_10203=0,
+#                                   customfield_10203=0,
                                   customfield_10205=str(bug.long_desc))
         return issue
 
